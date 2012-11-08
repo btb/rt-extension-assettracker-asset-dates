@@ -1,0 +1,5 @@
+Install the schema:
+
+sbin/rt-setup-database --dba <dba> \
+    --prompt-for-dba-password --action schema \
+    --datadir plugins/RTx-AssetTracker-Asset-Dates/etc

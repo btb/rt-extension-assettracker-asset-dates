@@ -1,0 +1,14 @@
+<%init>
+        if ( defined $ARGSRef->{'Action'} ) {
+            if ($ARGSRef->{'Action'} =~ /^(SetTold)$/) {
+                my $action = $1;
+                my ($res, $msg) = $Asset->$action();
+                push(@$Actions, $msg);
+            }
+        }
+</%init>
+<%args>
+$Asset
+$ARGSRef
+$Actions
+</%args>

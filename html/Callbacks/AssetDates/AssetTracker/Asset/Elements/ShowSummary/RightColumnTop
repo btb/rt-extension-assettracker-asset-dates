@@ -1,0 +1,7 @@
+    <&| /Widgets/TitleBox, title => loc("Dates"),
+        title_href => RT->Config->Get('WebPath')."/AssetTracker/Asset/ModifyDates.html?id=".$Asset->Id,
+        class => 'asset-info-dates',
+    &><& /AssetTracker/Asset/Elements/ShowDates, Asset => $Asset &></&>
+<%args>
+$Asset
+</%args>
