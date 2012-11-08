@@ -5,16 +5,9 @@ use strict;
 no warnings qw(redefine);
 
 
-
-
-use Data::Dumper;
-
-#die Dumper(_CoreAccessible());
 my $Orig__CoreAccessible = \&_CoreAccessible;
-#die Dumper($Orig__CoreAccessible->());
-my %orig = %{$Orig__CoreAccessible->()};
-#die(Dumper(%orig));
-my %new  = (
+my %orig_fields = %{$Orig__CoreAccessible->()};
+my %new_fields = (
         Told =>
 		{read => 1, write => 1, sql_type => 11, length => 0,  is_blob => 0,  is_numeric => 0,  type => 'datetime', default => ''},
         Starts => 
@@ -26,18 +19,12 @@ my %new  = (
         Resolved =>
 		{read => 1, write => 1, sql_type => 11, length => 0,  is_blob => 0,  is_numeric => 0,  type => 'datetime', default => ''},
 );
-#die(Dumper(%new));
-my %temp = (%orig, %new);
-#die Dumper(\%temp);
+
+my %all_fields = (%orig_fields, %new_fields);
+
 *_CoreAccessible = sub {
-    \%temp;
+    \%all_fields;
 };
-
-#die Dumper(_CoreAccessible());
-
-
-
-
 
 
 
