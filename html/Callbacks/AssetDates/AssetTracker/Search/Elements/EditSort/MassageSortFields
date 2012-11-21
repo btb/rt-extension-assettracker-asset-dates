@@ -1,0 +1,10 @@
+<%init>
+$Fields->{Activates} = 'Starts';
+$Fields->{Activated} = 'Started';
+$Fields->{Seen}      = 'Told';
+$Fields->{Expires}   = 'Due';
+$Fields->{Retired}   = 'Resolved';
+</%init>
+<%args>
+$Fields
+</%args>

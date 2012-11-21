@@ -1,0 +1,12 @@
+<%init>
+#    Activates   ActivatesRelative
+push @$Fields, qw(
+    Activated   ActivatedRelative
+    Seen        SeenRelative
+    Expires     ExpiresRelative
+    Retired     RetiredRelative
+);
+</%init>
+<%args>
+$Fields
+</%args>

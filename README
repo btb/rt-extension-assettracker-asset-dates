@@ -5,6 +5,8 @@ sbin/rt-setup-database --dba <dba> \
     --datadir plugins/RTx-AssetTracker-Asset-Dates/etc
 
 
+The date fields are named identically to the ticket fields internally,
+i.e. Starts Started Told Due Resolved, but to the user, they are
+changed to Activates Activated Seen Expires Retired, which make more
+sense for assets.
 
-TODO:
-make dates searchable, displayable in search

@@ -1,0 +1,63 @@
+<%init>
+$COLUMN_MAP->{ActivatesRelative} = {
+        title     => 'Activates', # loc
+        attribute => 'Starts',
+        value     => sub { return $_[0]->StartsObj->AgeAsString }
+    };
+$COLUMN_MAP->{ActivatedRelative} = {
+        title     => 'Activated', # loc
+        attribute => 'Started',
+        value     => sub { return $_[0]->StartedObj->AgeAsString }
+    };
+$COLUMN_MAP->{SeenRelative} = {
+        title     => 'Seen', # loc
+        attribute => 'Told',
+        value     => sub { return $_[0]->ToldObj->AgeAsString }
+    };
+$COLUMN_MAP->{ExpiresRelative} = {
+        title     => 'Expires', # loc
+        attribute => 'Due',
+        value     => sub { 
+            my $date = $_[0]->DueObj;
+            # Highlight the date if it was expires in the past, and it's still active
+            if ( $date && $date->Unix > 0 && $date->Diff < 0 && $_[0]->TypeObj->IsActiveStatus($_[0]->Status)) {
+                return (\'<span class="overdue">' , $date->AgeAsString , \'</span>');
+            } else {
+                return $date->AgeAsString;
+            }
+        }
+    };
+$COLUMN_MAP->{RetiredRelative} = {
+        title     => 'Retired', # loc
+        attribute => 'Resolved',
+        value     => sub { return $_[0]->ResolvedObj->AgeAsString }
+    };
+$COLUMN_MAP->{Activates} = {
+        title     => 'Activates', # loc
+        attribute => 'Starts',
+        value     => sub { return $_[0]->StartsObj->AsString }
+    };
+$COLUMN_MAP->{Activated} = {
+        title     => 'Activated', # loc
+        attribute => 'Activated',
+        value     => sub { return $_[0]->StartedObj->AsString }
+    };
+$COLUMN_MAP->{Seen} = {
+        title     => 'Seen', # loc
+        attribute => 'Told',
+        value     => sub { return $_[0]->ToldObj->AsString }
+    };
+$COLUMN_MAP->{Expires} = {
+        title     => 'Expires', # loc
+        attribute => 'Due',
+        value     => sub { return $_[0]->DueObj->AsString }
+    };
+$COLUMN_MAP->{Retired} = {
+        title     => 'Retired', # loc
+        attribute => 'Resolved',
+        value     => sub { return $_[0]->ResolvedObj->AsString }
+    };
+</%init>
+<%args>
+$COLUMN_MAP
+</%args>
