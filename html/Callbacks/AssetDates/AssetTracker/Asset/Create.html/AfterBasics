@@ -1,0 +1,29 @@
+<&|/Widgets/TitleBox, title => loc("Dates"), class => 'asset-info-dates' &>
+<table>
+%#<tr><td class="label"><&|/l&>Activates</&>:</td><td><& /Elements/SelectDate, Name => "Starts", Default => $ARGSRef->{Starts} || '' &></td></tr>
+<tr><td class="label"><&|/l&>Expires</&>:</td><td><& /Elements/SelectDate, Name => "Due", Default => $ARGSRef->{Due} || '' &></td></tr>
+</table>
+</&>
+<%init>
+my $CloneAssetObj;
+if ($ARGSRef->{CloneAsset}) {
+    $CloneAssetObj = RTx::AssetTracker::Asset->new( $session{CurrentUser} );
+    $CloneAssetObj->Load($ARGSRef->{CloneAsset})
+        or Abort( loc("Asset could not be loaded") );
+
+    my $clone = { };
+
+    for ( qw/Starts Started Due Resolved/ ) {
+        my $date_method = $_.'Obj';
+        $clone->{$_} = $CloneAssetObj->$date_method->AsString
+            if $CloneAssetObj->$date_method->Unix;
+    }
+
+    for ( keys %$clone ) {
+        $ARGSRef->{$_} = $clone->{$_} if not defined $ARGSRef->{$_};
+    }
+}
+</%init>
+<%args>
+$ARGSRef
+</%args>
