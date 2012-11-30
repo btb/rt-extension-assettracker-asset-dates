@@ -1,0 +1,13 @@
+<select name="<%$Name%>">
+<option value="Created"><&|/l&>Created</&></option>
+<option value="Started"><&|/l&>Activated</&></option>
+<option value="Resolved"><&|/l&>Retired</&></option>
+<option value="Told"><&|/l&>Last Seen</&></option>
+<option value="LastUpdated"><&|/l&>Last Updated</&></option>
+<option value="Starts"><&|/l&>Activates</&></option>
+<option value="Due"><&|/l&>Expires</&></option>
+<option value="Updated"><&|/l&>Updated</&></option>
+</select>
+<%ARGS>
+$Name => 'DateType'
+</%ARGS>

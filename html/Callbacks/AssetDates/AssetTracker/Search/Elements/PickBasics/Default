@@ -1,0 +1,10 @@
+<%init>
+foreach my $line ( @$Conditions ) {
+    if ( $line->{Name} eq 'Date' ) {
+        $line->{Field}{Path} = '/AssetTracker/Elements/SelectDateTypeExt';
+    }
+}
+</%init>
+<%args>
+$Conditions
+</%args>
